@@ -1,0 +1,19 @@
+def app(a, b):
+    x = (4 * a - b) / 2
+    if a != 0 and (4 * a - b) % (x * 2) == 0:
+        y = a - x
+        if x < 0 or y < 0:
+            print("{}只动物{}条腿的情况无解".format(a, b))
+        else:
+            print("鸡有{}只，兔有{}只".format(int(x), int(y)))
+    else:
+        print("{}只动物{}条腿的情况无解".format(a, b))
+
+
+a = input("请输入鸡和兔的总数\n")
+b = input("请输入鸡和兔的脚数\n")
+
+a = int(a)
+b = int(b)
+
+app(a, b)
