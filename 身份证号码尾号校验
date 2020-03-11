@@ -1,0 +1,23 @@
+class jiancha(object):
+    def __init__(self):
+        self.card_id = input('请输入身份证号码前17位:')
+        self.xishu = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+        self.yushu = [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2]
+
+    def panduan(self):
+        if len(list(self.card_id)) != 17:
+            print('输入的号码必须是17位才可验证!')
+            return False
+        return True
+
+    def jisuan(self):
+        count = 0
+        for i in range(17):
+            count += int(self.card_id[i]) * self.xishu[i]
+        last = count % 11
+        print('您的身份证号码是：%s%s' % (self.card_id, self.yushu[last]))
+
+zig = jiancha()
+b = zig.panduan()
+if b:
+    zig.jisuan()
