@@ -1,0 +1,15 @@
+"""
+将巧家1表格的相关列信息移动对应到巧家2表格中
+"""
+
+import pandas as pd
+df_grade = pd.read_excel('E:/韩斌/主管/陈艳/巧家2.xlsx')
+
+df_sinfo = pd.read_excel('E:/韩斌/主管/陈艳/巧家1.xlsx')
+
+df_sinfo = df_sinfo[["辅助","楼栋","楼层","宿舍号"]]
+df_merge = pd.merge(left=df_grade, right=df_sinfo, left_on="辅助", right_on="辅助")#以辅助列作为共同的数据源
+
+new_columns = df_merge.columns.to_list()
+df_merge = df_merge.reindex(columns=new_columns)
+df_merge.to_excel("E:/韩斌/主管/陈艳/巧家合并.xlsx", index=False)
